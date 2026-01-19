@@ -1,0 +1,190 @@
+/* Global CSS */
+/* Import Google Fonts (must come before Tailwind) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import 'tailwindcss';
+
+:root {
+    /* Work Mode - Teal Tone (like the image) */
+
+    /* --work-bg: #f9dfdf;
+    --work-container: #fcf8f8;
+    --work-text: #f5afaf;
+    --work-button-bg: #fbefef;
+    --work-button-text: #f5afaf; */
+
+    /* --work-bg: #f9dfdf;
+    --work-container: #f5afaf;
+    --work-text: #ffffff;
+    --work-button-bg: #fbefef;
+    --work-button-text: #f5afaf; */
+
+    --work-bg: #a594f9;
+    --work-container: #cdc1ff;
+    --work-text: #f5efff;
+    --work-button-bg: #f5efff;
+    --work-button-text: #a594f9;
+
+    /* Break Mode - Cyan Tone */
+    /* --break-bg: #b0db9c;
+    --break-container: #cae8bd;
+    --break-text: #ecfae5;
+    --break-button-bg: #ddf6d2;
+    --break-button-text: #b0db9c; */
+
+    --break-bg: #504b38;
+    --break-container: #b9b28a;
+    --break-text: #f8f3d9;
+    --break-button-bg: #f8f3d9;
+    --break-button-text: #504b38;
+
+    /* Long Break Mode - Blue-Teal Tone */
+    --longbreak-bg: #537d8f;
+    --longbreak-container: #7a9daf;
+    --longbreak-text: #ffffff;
+    --longbreak-button-bg: #ffffff;
+    --longbreak-button-text: #537d8f;
+}
+
+/* @media (prefers-color-scheme: dark) {
+    :root {
+        --current-bg: #064e3b;
+        --break-bg: #1e40af;
+        --long-break-bg: #78350f;
+        --neutral-bg: #1f2937;
+        --neutral-text: #d1d5db;
+    }
+} */
+
+[data-theme='work'] {
+    --bg-color: var(--work-bg);
+    --container-bg-color: var(--work-container);
+    --text-color: var(--work-text);
+    --button-bg-color: var(--work-button-bg);
+    --button-text-color: var(--work-button-text);
+    --menu-active-bg: var(--work-bg);
+}
+
+[data-theme='break'] {
+    --bg-color: var(--break-bg);
+    --container-bg-color: var(--break-container);
+    --text-color: var(--break-text);
+    --button-bg-color: var(--break-button-bg);
+    --button-text-color: var(--break-button-text);
+    --menu-active-bg: var(--break-bg);
+}
+
+[data-theme='longBreak'] {
+    --bg-color: var(--longbreak-bg);
+    --container-bg-color: var(--longbreak-container);
+    --text-color: var(--longbreak-text);
+    --button-bg-color: var(--longbreak-button-bg);
+    --button-text-color: var(--longbreak-button-text);
+    --menu-active-bg: var(--longbreak-bg);
+}
+
+body {
+    font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 25vh;
+    padding: 0;
+    background-color: var(--bg-color, #f3f4f6);
+    color: var(--text-color, #374151);
+    transition:
+        background-color 1s ease,
+        color 1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+}
+
+#root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    @apply font-bold py-2 px-4 rounded;
+    border: none;
+    cursor: pointer;
+}
+
+.timer-container {
+    @apply flex flex-col items-center justify-center content-center;
+    width: 25vw;
+    height: 35vh;
+    background-color: var(--container-bg-color, #e5e7eb);
+    transition: background-color 1s ease;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.pomodoro-header {
+    @apply text-5xl font-bold mb-4;
+    color: var(--text-color, #ffffff);
+}
+
+.timer-menu {
+    @apply flex justify-between mb-4;
+}
+
+.menu-button {
+    @apply rounded font-bold border-none px-4 py-2 ml-2;
+    color: var(--text-color, #ffffff);
+    transition: all 0.3s ease;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.menu-button:hover {
+    opacity: 0.8;
+}
+
+.menu-button.active {
+    opacity: 1;
+    background-color: var(--menu-active-bg, #3b82f6);
+    color: var(--text-color, white);
+    transform: scale(1.05);
+}
+
+.menu-button.active:hover {
+    opacity: 1;
+}
+
+.time-counter {
+    @apply text-6xl my-8;
+    color: var(--text-color, #ffffff);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    min-width: 280px;
+    text-align: center;
+    display: inline-block;
+}
+
+.session-counter {
+    @apply mb-1;
+    color: var(--text-color, #ffffff);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.time-controls {
+    @apply flex space-x-4;
+}
+
+.timer-buttons {
+    @apply flex space-x-4;
+}
+
+.timer-buttons button {
+    background-color: var(--button-bg-color, white);
+    color: var(--button-text-color, gray);
+    transition: all 0.3s ease;
+}
+
+.timer-buttons button:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
