@@ -143,7 +143,7 @@ button {
 
     /* Desktop */
     @media (width >= theme(--breakpoint-desktop)) {
-        width: 60vw;
+        width: 50vw;
     }
 
     background-color: var(--container-bg-color, #e5e7eb);
